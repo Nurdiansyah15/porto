@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
+import logo from "/src/assets/noordee.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -21,7 +22,7 @@ export default function Layout({ children }) {
         <div className="w-[95%] md:w-[80%] mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
-            <img src="/src/assets/noordee.png" alt="logo" className="w-20" />
+            <img src={logo} alt="logo" className="w-20" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -44,7 +45,10 @@ export default function Layout({ children }) {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className="md:hidden cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <Menu size={24} />
           </button>
         </div>

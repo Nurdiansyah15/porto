@@ -2,6 +2,7 @@ import { Brush, Code, Server } from "lucide-react";
 import React, { useState } from "react";
 import Layout from "./layout/Layout";
 import { motion } from "framer-motion";
+import hero from "/src/assets/foto.png";
 
 const proficiency = [
   {
@@ -55,7 +56,7 @@ export default function About() {
         {/* Content */}
         <div className="w-full flex flex-col gap-2 items-center my-10">
           <motion.img
-            src="/src/assets/foto.png"
+            src={hero}
             alt="foto"
             className="w-40 h-40 rounded-full"
             initial={{ scale: 0.8, opacity: 0 }}

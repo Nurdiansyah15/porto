@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import Layout from "./layout/Layout";
 import { useNavigate } from "react-router-dom";
+import hero from "/src/assets/foto.png";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function Home() {
 
           {/* Centered Image */}
           <motion.img
-            src="/src/assets/foto.png"
+            src={hero}
             alt="Centered Image"
             className="relative md:w-60 md:h-60 w-45 h-45 rounded-full object-cover"
             initial={{ scale: 0.5, opacity: 0 }}

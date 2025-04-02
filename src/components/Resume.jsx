@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Layout from "./layout/Layout";
+import enigma from "/src/assets/enigma.png";
+import undip from "/src/assets/undip.png";
 
 export default function Resume() {
   return (
@@ -44,7 +46,7 @@ export default function Resume() {
               ></div>
 
               <div className="text-[#61FAFF]">
-                <img src="../src/assets/undip.png" alt="" className="w-20" />
+                <img src={undip} alt="" className="w-20" />
               </div>
               <div>
                 <p className="text-lg font-bold">Universitas Diponegoro</p>
@@ -88,7 +90,7 @@ export default function Resume() {
 
             <div className="flex gap-4">
               <div className="text-[#61FAFF]">
-                <img src="../src/assets/enigma.png" alt="" className="w-20" />
+                <img src={enigma} alt="" className="w-20" />
               </div>
               <div>
                 <p className="text-lg font-bold">Enigma Camp</p>
