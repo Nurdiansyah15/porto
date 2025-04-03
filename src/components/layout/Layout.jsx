@@ -8,6 +8,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Resume", path: "/resume" },
+  { name: "Project", path: "/project" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -19,7 +20,7 @@ export default function Layout({ children }) {
     <div className="flex flex-col min-h-screen bg-[#000000]">
       {/* Navbar */}
       <nav className="w-full bg-[#000] shadow-md py-4 text-white relative">
-        <div className="w-[95%] md:w-[80%] mx-auto flex justify-between items-center">
+        <div className="w-[95%] md:w-[70%] mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
             <img src={logo} alt="logo" className="w-20" />
@@ -78,7 +79,7 @@ export default function Layout({ children }) {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-grow flex justify-center relative overflow-hidden w-[95%] md:w-[80%] mx-auto my-3">
+      <main className="flex-grow flex justify-center relative overflow-hidden w-[95%] md:w-[70%] mx-auto my-3">
         {children}
       </main>
     </div>
