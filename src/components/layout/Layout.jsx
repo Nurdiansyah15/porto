@@ -1,25 +1,23 @@
-import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu } from "lucide-react";
+import { motion } from "framer-motion";
+import { BookCheck, Computer, Home, Mail, User } from "lucide-react";
 import logo from "/src/assets/noordee.png";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Resume", path: "/resume" },
-  { name: "Project", path: "/project" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/", icon: <Home size={24} /> },
+  { name: "About", path: "/about", icon: <User size={24} /> },
+  { name: "Resume", path: "/resume", icon: <BookCheck size={24} /> },
+  { name: "Project", path: "/project", icon: <Computer size={24} /> },
+  { name: "Contact", path: "/contact", icon: <Mail size={24} /> },
 ];
 
 export default function Layout({ children }) {
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000]">
-      {/* Navbar */}
-      <nav className="w-full bg-[#000] shadow-md py-4 text-white relative">
+    <div className="flex flex-col min-h-screen bg-black">
+      {/* Navbar Atas (Desktop) */}
+      <nav className="w-full bg-black shadow-md py-4 text-white relative hidden md:flex">
         <div className="w-[95%] md:w-[70%] mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
@@ -27,7 +25,7 @@ export default function Layout({ children }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-6">
+          <div className="gap-6 flex">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -44,39 +42,32 @@ export default function Layout({ children }) {
               </Link>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden cursor-pointer"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <Menu size={24} />
-          </button>
         </div>
-
-        {/* Mobile Navigation with Smooth Transition */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full left-0 w-full bg-black text-white shadow-lg z-50 flex flex-col gap-4 py-4"
-            >
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="px-6 py-2 font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Navbar Bawah (Mobile) */}
+      <div className="fixed bottom-0 bg-[#111111] z-50 w-full h-16 flex items-center justify-around border-t border-gray-700 md:hidden">
+        {navItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`flex flex-col items-center px-4 ${
+              location.pathname === item.path ? "text-[#61FAFF]" : "text-white"
+            }`}
+          >
+            <p
+              className={`${
+                location.pathname === item.path
+                  ? "text-[#61FAFF]"
+                  : "text-white"
+              }`}
+            >
+              {item.icon}
+            </p>
+            <span className="text-xs">{item.name}</span>
+          </Link>
+        ))}
+      </div>
 
       {/* Main Content */}
       <main className="flex-grow flex justify-center relative overflow-hidden w-[95%] md:w-[70%] mx-auto my-3">
