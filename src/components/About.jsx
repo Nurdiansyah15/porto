@@ -45,7 +45,7 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }} // Muncul perlahan ke posisi normal
         exit={{ opacity: 0, y: 50 }} // Menghilang dengan efek turun
         transition={{ duration: 0.5, ease: "easeInOut" }} // Efek transisi smooth
-        className="bg-[#161616] rounded-[10px] w-full p-5"
+        className="bg-[#111111] rounded-[10px] w-full p-5"
       >
         {/* Title */}
         <div id="title" className="flex gap-2">
@@ -110,23 +110,11 @@ export default function About() {
               {proficiency.map((skill, index) => (
                 <motion.div
                   key={index}
-                  className="relative flex items-center gap-4 p-4 rounded-lg bg-[#161616] overflow-hidden"
+                  className="relative flex items-center gap-4 p-4 rounded-lg border-1 border-gray-600"  
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                 >
-                  <div
-                    className="absolute inset-0 rounded-lg border-2 border-transparent"
-                    style={{
-                      background:
-                        "linear-gradient(to right, #ffffff, #61FAFF) border-box",
-                      WebkitMask:
-                        "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-                      WebkitMaskComposite: "destination-out",
-                      maskComposite: "exclude",
-                    }}
-                  ></div>
-
                   <div className="text-[#61FAFF]">{skill.icon}</div>
                   <div>
                     <p className="text-lg font-semibold">{skill.title}</p>
@@ -150,22 +138,11 @@ export default function About() {
               {Object.entries(skills).map(([category, items], i) => (
                 <motion.div
                   key={category}
-                  className="relative flex flex-col gap-4 p-4 rounded-lg bg-[#161616] overflow-hidden"
+                  className="relative flex flex-col gap-4 p-4 rounded-lg border-1 border-gray-600"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 * i }}
                 >
-                  <div
-                    className="absolute inset-0 rounded-lg border-2 border-transparent"
-                    style={{
-                      background:
-                        "linear-gradient(to right, #ffffff, #61FAFF) border-box",
-                      WebkitMask:
-                        "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-                      WebkitMaskComposite: "destination-out",
-                      maskComposite: "exclude",
-                    }}
-                  ></div>
                   <p className="text-lg font-semibold capitalize">{category}</p>
                   <div className="flex gap-2 flex-wrap">
                     {items.map((skill) => (

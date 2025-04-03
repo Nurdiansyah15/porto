@@ -11,7 +11,7 @@ export default function Resume() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-[#161616] rounded-[10px] w-full p-5 md:space-y-0 space-y-4"
+        className="bg-[#111111] rounded-[10px] w-full p-5 md:space-y-0 space-y-4"
       >
         <div id="title" className="flex gap-2">
           <p className="text-white text-2xl font-bold">Resume</p>
@@ -28,23 +28,11 @@ export default function Resume() {
           <p className="text-xl font-bold mb-5">Educations</p>
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div
-              className="relative flex items-center gap-4 p-4 rounded-lg bg-[#161616] overflow-hidden"
+              className="relative flex items-center gap-4 p-4 rounded-lg border-1 border-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <div
-                className="absolute inset-0 rounded-lg border-2 border-transparent"
-                style={{
-                  background:
-                    "linear-gradient(to right, #ffffff, #61FAFF) border-box",
-                  WebkitMask:
-                    "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-                  WebkitMaskComposite: "destination-out",
-                  maskComposite: "exclude",
-                }}
-              ></div>
-
               <div className="text-[#61FAFF]">
                 <img src={undip} alt="" className="w-20" />
               </div>
@@ -71,23 +59,11 @@ export default function Resume() {
         >
           <p className="text-xl font-bold mb-5">Training & Certifications</p>
           <motion.div
-            className="relative flex flex-col gap-4 p-4 rounded-lg bg-[#161616] overflow-hidden"
+            className="relative flex flex-col gap-4 p-4 rounded-lg border-1 border-gray-600"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div
-              className="absolute inset-0 rounded-lg border-2 border-transparent"
-              style={{
-                background:
-                  "linear-gradient(to right, #ffffff, #61FAFF) border-box",
-                WebkitMask:
-                  "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-                WebkitMaskComposite: "destination-out",
-                maskComposite: "exclude",
-              }}
-            ></div>
-
             <div className="flex gap-4">
               <div className="text-[#61FAFF]">
                 <img src={enigma} alt="" className="w-20" />

@@ -15,7 +15,7 @@ export default function Project() {
       id: 1,
       title: "Project One",
       description:
-        "This is a brief description of the project, including features and purpose.",
+        "This is a brief description of the project, including features and purpose, This is a brief description of the project, including features and purpose, This is a brief description of the project, including features and purpose, ",
       techStack: ["React", "Tailwind", "Framer Motion"],
       image: "https://fakeimg.pl/600x400",
       github: "https://github.com/Nurdiansyah15/porto",
@@ -75,36 +75,27 @@ export default function Project() {
           ))}
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
-          {[...projects]
-            .filter((item) => {
-              if (activeCategory === "all category" || !activeCategory) {
-                return true;
-              } else {
-                return item.category === activeCategory;
-              }
-            })
+          {projects
+            .filter(
+              (item) =>
+                activeCategory === "all category" ||
+                !activeCategory ||
+                item.category === activeCategory
+            )
             .map((project) => (
               <motion.div
                 key={project.id}
-                className="relative gap-4 p-4 rounded-lg bg-[#161616] overflow-hidden"
+                className={`relative gap-4 p-4 rounded-lg border border-gray-600 cursor-pointer bg-[#161616] overflow-hidden transition-all duration-300`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
+                layout
+                onClick={() =>
+                  setActiveProject(
+                    activeProject?.id === project.id ? null : project
+                  )
+                }
               >
-                {/* Border Gradient */}
-                <div
-                  className="absolute inset-0 rounded-lg border-2 border-transparent pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(to right, #ffffff, #61FAFF) border-box",
-                    WebkitMask:
-                      "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-                    WebkitMaskComposite: "destination-out",
-                    maskComposite: "exclude",
-                  }}
-                ></div>
-
                 <img src={project.image} alt="" className="rounded-md" />
 
                 <div className="flex justify-between items-start mt-3">
@@ -112,94 +103,81 @@ export default function Project() {
                     <p className="text-white text-xl font-semibold">
                       {project.title}
                     </p>
-                    <p className="text-white text-md line-clamp-2">
+                    <p className="text-gray-400 text-md line-clamp-2">
                       {project.description}
                     </p>
                   </div>
-                  <div
-                    className="text-white cursor-pointer"
-                    onClick={() => {
-                      setActiveProject(project);
-                    }}
-                  >
-                    <EllipsisVertical />
+                  <div className="text-white cursor-pointer">
+                    {activeProject?.id === project.id ? (
+                      <X size={20} />
+                    ) : (
+                      <ExternalLink size={20} />
+                    )}
                   </div>
                 </div>
+
+                {/* Detail hanya muncul jika project aktif */}
+                {activeProject?.id === project.id && (
+                  <motion.div
+                    className="absolute left-0 top-0 w-full h-full bg-[#1c1c1c] bg-opacity-90 backdrop-blur-md p-4 rounded-md flex flex-col shadow-md overflow-scroll"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <button
+                      className="absolute top-3 right-3 text-gray-400 hover:text-white"
+                      onClick={() => setActiveProject(null)}
+                    >
+                      <X size={20} />
+                    </button>
+
+                    <h3 className="text-white text-lg font-semibold mb-2">
+                      Description:
+                    </h3>
+                    <ul className="text-gray-400 mb-3 text-justify">
+                      {project.description}
+                    </ul>
+
+                    <h3 className="text-white text-lg font-semibold mb-2 ">
+                      Tech Stack:
+                    </h3>
+                    <ul className="text-gray-400 mb-3 ">
+                      {project.techStack.map((tech) => (
+                        <li key={tech}>- {tech}</li>
+                      ))}
+                    </ul>
+
+                    <div className="flex gap-4">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-gray-400 hover:text-white"
+                        >
+                          <Github size={20} />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                      {project.deploy && (
+                        <a
+                          href={project.deploy}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-gray-400 hover:text-white"
+                        >
+                          <ExternalLink size={20} />
+                          <span>Live Demo</span>
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
         </div>
 
         {/* Modal */}
-        <AnimatePresence>
-          {activeProject && (
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveProject(null)}
-            >
-              <motion.div
-                className="bg-[#1c1c1c] p-6 rounded-lg shadow-lg max-w-md w-full relative"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 50, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Tombol Close */}
-                <button
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white"
-                  onClick={() => setActiveProject(null)}
-                >
-                  <X size={20} />
-                </button>
-
-                <h2 className="text-white text-2xl font-bold mb-2">
-                  {activeProject.title}
-                </h2>
-                <p className="text-gray-300 mb-4">
-                  {activeProject.description}
-                </p>
-
-                <h3 className="text-white text-lg font-semibold">
-                  Tech Stack:
-                </h3>
-                <ul className="text-gray-400 mb-4">
-                  {activeProject.techStack.map((tech) => (
-                    <li key={tech}>- {tech}</li>
-                  ))}
-                </ul>
-
-                {/* Link GitHub & Deploy */}
-                <div className="flex gap-4">
-                  {activeProject.github && (
-                    <a
-                      href={activeProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white"
-                    >
-                      <Github size={20} />
-                      <span>GitHub</span>
-                    </a>
-                  )}
-
-                  {activeProject.deploy && (
-                    <a
-                      href={activeProject.deploy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white"
-                    >
-                      <ExternalLink size={20} />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
     </Layout>
   );

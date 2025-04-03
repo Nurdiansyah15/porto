@@ -57,7 +57,7 @@ export default function Home() {
 
           {/* Button */}
           <motion.button
-            className="bg-[#02B0CF] hover:border-[#02B0CF] hover:border hover:bg-transparent text-white font-bold py-2 px-4 rounded-[10px]"
+            className="bg-[#02B0CF] hover:border-[#02B0CF] hover:border hover:bg-transparent text-white font-bold py-2 px-4 rounded-[10px] cursor-pointer"
             onClick={() => {
               navigate("/about");
             }}
