@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen bg-black md:pb-0 pb-16">
       {/* Navbar Atas (Desktop) */}
       <nav className="w-full bg-black shadow-md py-4 text-white relative hidden md:flex">
         <div className="w-[95%] md:w-[70%] mx-auto flex justify-between items-center">
