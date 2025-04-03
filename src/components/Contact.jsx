@@ -19,34 +19,34 @@ export default function Contact() {
 
         <div className="space-y-4">
           <motion.a
-            href="https://wa.me/yourphonenumber"
+            href="https://wa.me/6283113867425"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-[#161616] p-4 rounded-lg shadow-md hover:bg-[#1c1c1c] transition"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle size={24} className="text-green-400" />
-            <span>WhatsApp: +62 812-3456-7890</span>
+            <span>WhatsApp: +62 831-1386-7425</span>
           </motion.a>
 
           <motion.a
-            href="https://instagram.com/yourusername"
+            href="https://instagram.com/mr_nurdiansyah"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-[#161616] p-4 rounded-lg shadow-md hover:bg-[#1c1c1c] transition"
             whileHover={{ scale: 1.05 }}
           >
             <Instagram size={24} className="text-pink-400" />
-            <span>Instagram: @yourusername</span>
+            <span>Instagram: @mr_nurdiansyah</span>
           </motion.a>
 
           <motion.a
-            href="mailto:yourmail@example.com"
+            href="mailto:nurdinurdiansyah15@gmail.com"
             className="flex items-center gap-3 bg-[#161616] p-4 rounded-lg shadow-md hover:bg-[#1c1c1c] transition"
             whileHover={{ scale: 1.05 }}
           >
             <Mail size={24} className="text-blue-400" />
-            <span>Email: yourmail@example.com</span>
+            <span>Email: nurdinurdiansyah15@gmail.com</span>
           </motion.a>
         </div>
       </motion.div>

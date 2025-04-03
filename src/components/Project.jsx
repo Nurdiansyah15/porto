@@ -1,50 +1,12 @@
+import { motion } from "framer-motion";
+import { ExternalLink, Github, X } from "lucide-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ExternalLink } from "lucide-react";
-import { EllipsisVertical } from "lucide-react";
 import Layout from "./layout/Layout";
+import { category, projects } from "../data/data";
 
 export default function Project() {
   const [activeProject, setActiveProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
-
-  const category = ["all category", "backend", "frontend"];
-
-  const projects = [
-    {
-      id: 1,
-      title: "Project One",
-      description:
-        "This is a brief description of the project, including features and purpose, This is a brief description of the project, including features and purpose, This is a brief description of the project, including features and purpose, ",
-      techStack: ["React", "Tailwind", "Framer Motion"],
-      image: "https://fakeimg.pl/600x400",
-      github: "https://github.com/Nurdiansyah15/porto",
-      deploy: "https://github.com/Nurdiansyah15/porto",
-      category: "backend",
-    },
-    {
-      id: 2,
-      title: "Project Two",
-      description:
-        "Another cool project with interesting technology stack and functionalities.",
-      techStack: ["Next.js", "Tailwind", "Vercel"],
-      image: "https://fakeimg.pl/600x400",
-      github: "https://github.com/Nurdiansyah15/porto",
-      deploy: "",
-      category: "frontend",
-    },
-    {
-      id: 3,
-      title: "Project Three",
-      description:
-        "Another cool project with interesting technology stack and functionalities.",
-      techStack: ["Next.js", "Tailwind", "Vercel"],
-      image: "https://fakeimg.pl/600x400",
-      github: "https://github.com/Nurdiansyah15/porto",
-      deploy: "",
-      category: "backend",
-    },
-  ];
 
   return (
     <Layout>
@@ -96,7 +58,7 @@ export default function Project() {
                   )
                 }
               >
-                <img src={project.image} alt="" className="rounded-md" />
+                <img src={project.image} alt="" className="rounded-md w-full" />
 
                 <div className="flex justify-between items-start mt-3">
                   <div>

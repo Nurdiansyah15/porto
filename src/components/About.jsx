@@ -1,40 +1,22 @@
-import { Brush, Code, Server } from "lucide-react";
-import React, { useState } from "react";
-import Layout from "./layout/Layout";
 import { motion } from "framer-motion";
+import { Code, Server } from "lucide-react";
+import React, { useState } from "react";
+import { skills } from "../data/data";
+import Layout from "./layout/Layout";
 import hero from "/src/assets/foto.png";
 
-const proficiency = [
+export const proficiency = [
   {
     icon: <Code size={40} />,
     title: "Frontend Development",
-    desc: "Building interactive and responsive UIs using React, Tailwind, and more.",
+    desc: "Experienced in building responsive and interactive UIs using React.js and Vue.js, with a strong focus on performance, state management, and component-based architecture.",
   },
   {
     icon: <Server size={40} />,
     title: "Backend Development",
-    desc: "Creating robust APIs and backend services with Golang and Node.js.",
-  },
-  {
-    icon: <Brush size={40} />,
-    title: "UI/UX Design",
-    desc: "Designing user-friendly interfaces with a focus on aesthetics and usability.",
+    desc: "Skilled in developing scalable APIs and backend systems using Go (Gin), PHP (Laravel), and Java (Spring Boot), handling authentication, database management, and server-side logic.",
   },
 ];
-
-const skills = {
-  languages: [
-    { id: 1, name: "Golang", image: "https://fakeimg.pl/600x400" },
-    { id: 2, name: "JavaScript", image: "https://fakeimg.pl/600x400" },
-    { id: 3, name: "JavaScript", image: "https://fakeimg.pl/600x400" },
-    { id: 4, name: "JavaScript", image: "https://fakeimg.pl/600x400" },
-    { id: 5, name: "JavaScript", image: "https://fakeimg.pl/600x400" },
-  ],
-  frameworks: [
-    { id: 3, name: "React", image: "https://fakeimg.pl/600x400" },
-    { id: 4, name: "Next.js", image: "https://fakeimg.pl/600x400" },
-  ],
-};
 
 export default function About() {
   const [openText, setOpenText] = useState(false);
@@ -106,11 +88,11 @@ export default function About() {
             <p className="text-xl font-bold mb-5">Proficiency</p>
 
             {/* Skill Cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {proficiency.map((skill, index) => (
                 <motion.div
                   key={index}
-                  className="relative flex items-center gap-4 p-4 rounded-lg border-1 border-gray-600"  
+                  className="relative flex items-center gap-4 p-4 rounded-lg border-1 border-gray-600"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -150,7 +132,6 @@ export default function About() {
                         key={skill.id}
                         src={skill.image}
                         alt={skill.name}
-                        className="w-20 rounded-md"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
