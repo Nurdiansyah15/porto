@@ -51,7 +51,8 @@ export default function Home() {
             <p className="italic text-lg">Hi everyone !, I am</p>
             <p className="text-5xl font-bold text-[#61FAFF]">Nurdiansyah</p>
             <p className="italic text-base mt-3">
-              I am very excited to be useful
+              I am an optimistic person, a quick learner of technology, and
+              casually friendly.
             </p>
           </motion.div>
 
@@ -65,7 +66,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Explore Me
+            Let's Explore
           </motion.button>
         </div>
       </motion.div>
